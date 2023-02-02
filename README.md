@@ -1,109 +1,83 @@
 <h1 align="center">My-movie-app</h1>
 
+<p align="center">
+
+<img src="https://github.com/ManeDM/my_movie_app/blob/main/assets/crud.jpeg" width="400px"> 
+
+</p>
+
 
 <p>
 Este proyecto se basa en aprender a realizar consultas CRUD, mediante el uso de FAStApi.
 </p>
 
-<h2 align="center">Descripción ddle proceso para consultas CRUD con FastApi</h2>
+<h2 align="center">Descripción del proceso para consultas CRUD con FastApi</h2>
+
+
+<p>
+El manejo de base de datos mediante el uso de FastApi nos permite manipular informacion de tablas mediante el uso de logica de progrmacion orientada a objetos, en esta caso haciendo uso de python, para esto hace manejo de la siguiente estructura Models - Schemas - Services - Routes
+</p>
+
+<h2 align="center">Models</h2>
 
 <p align="center">
 
-<img src="https://github.com/ManeDM/Cafereflejo/blob/main/src/assets/readme_img/Service_products.png" width="600px"> 
+<img src="https://github.com/ManeDM/my_movie_app/blob/main/assets/model.png" width="400px"> 
 
 </p>
 
 <p>
-Primero se establece una varieble que llame a lista de productos, luego para trabajar con estos se crear una variable items que recupere las caracteristicas especficas de cada producto, nombre, peso, disponibilidad etc.
+primero se importar desde SQlalchemy, los tipos de datos que llevara el modelo y la creacion de la columna.
 
-Ya con esto se crean 5 funciones que interactuaran con los demas componentes del proytecto.
-
-addToCart() sirve para agregar productos al carrito, cada vez que se agrega uno se suma a la tarjeta ya pintada en el carrito.
-
-removeFromCart() sirve para eliminar productos del carrito, cada vez que se quita uno se elimina uno de la cantidad total de productos del carrito.
-
-totalPrice() es una funcion que calcula el precio total con base al precio y el subtotal de cada productos cargado al carrito.
-
-CartList() permite llamar las caracteristicas del los productos para hacer plantillas de html que reflejen una tarjeta de cada producto. 
-
- reduceAmount() esta funcion permite reducir los subtotales para que las otras funciones puedan hacer los calculos.
+Luego se importa la base de datos, para proseguir con la creacion de la tabla, una bez creada esta la tabla contendra variables nombradas con base al contenido de la informacion que tendra la tabla , cada varaible sera igual a una columna y a su vez cada colmuna soportara un tipo de dato especifico.
 </p>
+
+<h2 align="center">Schemas</h2>
 
 <p align="center">
 
-<img src="https://github.com/ManeDM/Cafereflejo/blob/main/src/assets/readme_img/Service_wp.png" width="400px"> 
+<img src="https://github.com/ManeDM/my_movie_app/blob/main/assets/schema.png" width="400px"> 
 
 </p>
 
 <p>
-Se establece un variable que se iguale a la API de Whatsapp y otro varaible que se igual al codigo d eun salto de linea, luego de esto se crean dos funciones.
-
-skipLine() se encarga de implementar la variable para el salto de linea e igualarlo a un mensaje pre fijado.
-
-skipLine() se encarga de enviar el mensaje al Wp del vendedor con los productos que requiere el cliente.
+Los esquemas sirven para definir las caracteristicas especificas de cada campo en nuestra tabla, mediante la creacion de varaibles que hagan referencia a los datos previamente creados en los modelos, se definen caracteristicas espcificas con las cuales estos deben contas, como por ejemplo un minimo y un maximo de caracteres, en el caso de que estuvieramos esperando un archivo de String.
 </p>
 
-<h2 align="center">Shared y sus componentes</h2>
-
-<h3 align="center">Header</h3>
+<h2 align="center">Service</h3>
 
 <p align="center">
-<img src=https://github.com/ManeDM/Cafereflejo/blob/main/src/assets/readme_img/Burgue_function.png width="400px"> 
+
+<img src="https://github.com/ManeDM/my_movie_app/blob/main/assets/service.png" width="400px"> 
+
 </p>
+
+<p>
+Los servicios son lo que nos permite utilizar la logica de programacion orientada a objetos, ya que es aqui donde podremos crear funciones especficas para captar y manipular la informacion de nuestras bases de datos, en este caso usando python.
+
+Una función siempre se contiene a si misma como parametro y agregado a esta los demas parametros con los que la funcion va a trabajar, luego dentro de la funcion se crea una variable que sea igual al Modelo de la tabla con la que estamos trabajando, dicha varaible contiene los datos especificos que se prentenden captar y/o manipular.
+</p>
+
+<h2 align="center">Routes</h3>
 
 <p align="center">
-Es la cabecera general de la página, trabaja con un booleano y mediante la directiva *NgIf se abre o cierra el menu.
-</p>
 
-<h3 align="center">Hero-section</h3>
-<p align="center">
-En este componente muestra un primer plano del producto y un frase de copy, no tiene funcionalidad.
-</p>
-
-<h3 align="center">Slider</h3>
-<p align="center">
-En este componente se muestra un carrusel de imagenes, no tiene funcionalidad.
-</p>
-
-<h3 align="center">Carrito
-<p align="center">
-
-<img src="https://github.com/ManeDM/Cafereflejo/blob/main/src/assets/readme_img/cart_component.png" width="400px" align="center"> 
+<img src="https://github.com/ManeDM/my_movie_app/blob/main/assets/routes.png" width="400px"> 
 
 </p>
 
-<p align="center">
-El carrito cuenta con dos funciones básicas haciendo uso de del servicio previamente mencionado.
+<p>
+Ahora con  modelos, esquemas y servicios contruidos podemos atribuirles una ruta, la cual ejecutara una accion especifica es aqui ya podemos hacer consultas CRUD, mediante los metodos get, post,put, delete.
 
-addToCart() permite agregar productos al carrito.
+con el decorador @ se invoca una ruta previamente creada en el archivo main.py mediante el API Router, luego se ejecuta el tipo de consulta que vamos a realizar (Get, post, put, delete), seguido a esto se establece una ruta para que el servidor tenga donde cargar la informacion consultada y un tag para poder ejecutar la consulta en el servidor.
 
-filterProducts() permite filtrar productos basandose en una categoria, esta funcion pinta en pantalla solo los productos filtrados.
+luego se crea un funcion que contenga como parametro el dato con el cual se espera trabajar.
+
+Acontinuacion se debe abrir una sesion que nos permita trabajar con la base de datos.
+
+Ahora mediante la creacion de uan varaible, normalmente llamada result, se llama el servicio previamente creado, el parametro de esta varaible debe ser la base de datos, seguido a esto llamado el servicio especifico que ejecutara la logica del llamada de datos, este servicio tendra como paramaetro el tipo de dato con el que trabajara.
+
+Despues de esto la funcion nos puede retonar uno o mas respuestas dependiendo de las condiciones establecidas.
 </p>
 
-<h3 align="center">About-us</h3>
-<p align="center">
-Descripcion de las condicones de csiembra y cultivo del cafe, no tiene funcionalidad.
-</p>
-
-<h3 align="center">Footer</h3>
-<p align="center">
-Datos de contacto, no tiene funcionalidad.
-</p>
-
-<h3 align="center">List-cart</h3>
-<p align="center">
-
-<img src="https://github.com/ManeDM/Cafereflejo/blob/main/src/assets/readme_img/list_component.png" width="400px" align="center"> 
-
-</p>
-
-<p align="center">
-En este componente  establecen tres funcionalidades.
-
-deleteProduct() Permite borrar productos previamente cargados al carrito.
-
-sendWhatsapp() toma los dos servicios creados, el de wp permite cargar informacion llamado por el primer servicio y con esta info se envia la informacion de los costes y cantidades al vendedor.
-
-removeProduct() esta funcion permite calcular el valor de los subtotales y totales, conforme se van quitando productos.
-</p>
 
