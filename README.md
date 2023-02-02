@@ -7,14 +7,14 @@
 </p>
 
 
-<p>
+<p align="center">
 Este proyecto se basa en aprender a realizar consultas CRUD, mediante el uso de FAStApi.
 </p>
 
 <h2 align="center">Descripción del proceso para consultas CRUD con FastApi</h2>
 
 
-<p>
+<p >
 El manejo de base de datos mediante el uso de FastApi nos permite manipular informacion de tablas mediante el uso de logica de progrmacion orientada a objetos, en esta caso haciendo uso de python, para esto hace manejo de la siguiente estructura Models - Schemas - Services - Routes
 </p>
 
